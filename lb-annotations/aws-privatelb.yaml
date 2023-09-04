@@ -1,0 +1,8 @@
+annotations:
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"\
+    service.beta.kubernetes.io/aws-load-balancer-name: custom-name  # cannot be changed once created 
+    kubernetes.io/ingress.class: "alb"     # Ingress Core Settings
+    alb.ingress.kubernetes.io/scheme: internet-facing # Health Check Settings
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80,"HTTPS": 443}]'
+    
