@@ -1,0 +1,13 @@
+  annotations:
+    oci.oraclecloud.com/load-balancer-type: "lb"
+    service.beta.kubernetes.io/oci-load-balancer-shape: "flexible"
+    service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "<min-value>"
+    service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "<max-value>"
+    service.beta.kubernetes.io/oci-load-balancer-internal: "true"
+    service.beta.kubernetes.io/oci-load-balancer-subnet1: "<subnet-OCID>"
+    oci.oraclecloud.com/oci-network-security-groups: "<nsg-ocid>"
+
+## I usually prefer adding the ssl certificate separately from the console , if want to add through annotations use the below annotations :- 
+
+    service.beta.kubernetes.io/oci-load-balancer-ssl-ports: "443"
+    service.beta.kubernetes.io/oci-load-balancer-tls-secret: ssl-certificate-secret  # create secret in the same ns with the cert value as secret

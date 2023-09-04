@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: $name
+spec:
+  type: NodePort  # available types :- LoadBalancer , NodePort , ClusterIp ; For LoadBalancer type refer annotations section for specific clouds .
+  ports:
+  - port: 3016
+    targetPort: 3016
+  selector:
+    app: $name

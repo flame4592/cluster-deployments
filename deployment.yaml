@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $name  #name of service
+  labels:
+    app: $name
+spec:
+  replicas: 1   #replica count
+  selector:
+    matchLabels:
+      app: $name
+  template:
+    metadata:
+      labels:
+        app: $name
+    spec:
+      containers:
+      - name: $name
+        image: bom.ocir.io/<id>/$name:latest
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: 600Mi
+            cpu: 100m
+          requests:
+            memory: 300Mi
+            cpu: 60m 
+        ports:
+        - containerPort: 3016
+      imagePullSecrets:
+        - name: <secret name>   #when pulling the image from a private repo , secrets needs to configured at the cluster level in the same ns as the deployment to be able to pull the image , secrets consists of image repo credentials specific to the user/service account .
